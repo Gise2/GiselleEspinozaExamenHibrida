@@ -1,0 +1,22 @@
+<form [formGroup]="postForm" (ngSubmit)="savePost()">
+  <ion-item>
+    <ion-label position="floating">Título</ion-label>
+    <ion-input formControlName="title"></ion-input>
+  </ion-item>
+  <div *ngIf="postForm.get('title')?.invalid && postForm.get('title')?.touched">
+    <small>El título debe tener al menos 5 caracteres.</small>
+  </div>
+
+  <ion-item>
+    <ion-label position="floating">Descripción</ion-label>
+    <ion-textarea formControlName="description"></ion-textarea>
+  </ion-item>
+  <div *ngIf="postForm.get('description')?.invalid && postForm.get('description')?.touched">
+    <small>La descripción debe tener al menos 20 caracteres.</small>
+  </div>
+
+  <ion-button expand="full" (click)="capturePhoto()">Tomar Foto</ion-button>
+  <img *ngIf="photo" [src]="photo" alt="Imagen Capturada" />
+
+  <ion-button expand="full" type="submit" [disabled]="postForm.invalid">Guardar</ion-button>
+</form>

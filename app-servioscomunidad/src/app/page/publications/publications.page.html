@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Publicaciones</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let post of posts">
+      <ion-thumbnail slot="start">
+        <img [src]="post.photo" alt="Imagen de publicación" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.date }}</p>
+      </ion-label>
+      <ion-button fill="clear" (click)="confirmDelete(post)">
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+  
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/publication-form">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+<p>{{ post.date | dateFormat }}</p>
